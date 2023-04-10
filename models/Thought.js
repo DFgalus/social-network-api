@@ -57,3 +57,14 @@ const thoughtSchema = new Schema (
         id: false,
     }
 )
+
+//get number of all friends
+thoughtSchema.virtual('reactionCount')
+.get(function() {
+    return this.reactions.length;
+})
+
+//create User model using the user schema
+const Thought = model('thought', thoughtSchema);
+
+module.exports = Thought;
